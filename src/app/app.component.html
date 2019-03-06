@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<ul>
+  <li>
+    <h2>Surface Type: {{court.Surface}}</h2>
+  </li>
+  <li>
+    <h2>Field: {{court.Field}}</h2>
+  </li>
+  <li>
+    <h2>ID: {{court.Id}}</h2>
+  </li>
+  <li>
+    <h2>Lenght: {{court.Length}}</h2>
+  </li>
+  <input type="text" [(ngModel)] = "court.Field ">
+</ul>
+<table>
+<thead>
+<th>Name </th>
+<th>Sport </th>
+<th>Infos </th>
+</thead>
+<tbody>
+<tr *ngFor='let court of courts'>
+  <td>{{court.Field}}</td>
+  <td *ngIf='Sport=="Soccer"'
+  [style.background.color]='backgroundcolor'>
+    {{court.Sport}}
+  </td>
+</tr>
+</tbody>
+</table>
+<router-outlet></router-outlet>
