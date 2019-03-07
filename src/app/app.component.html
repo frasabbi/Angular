@@ -1,4 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></head>
 <ul>
   <li>
     <h2>Surface Type: {{court.Surface}}</h2>
@@ -10,7 +11,7 @@
     <h2>ID: {{court.Id}}</h2>
   </li>
   <li>
-    <h2>Lenght: {{court.Length}}</h2>
+    <h2>Length: {{court.Length}}</h2>
   </li>
   <input type="text" [(ngModel)] = "court.Field ">
 </ul>
@@ -19,14 +20,26 @@
 <th>Name </th>
 <th>Sport </th>
 <th>Infos </th>
+<th></th>
+<th>Numero massimo giocatori</th>
 </thead>
 <tbody>
 <tr *ngFor='let court of courts'>
   <td>{{court.Field}}</td>
-  <td *ngIf='Sport=="Soccer"'
-  [style.background.color]='backgroundcolor'>
-    {{court.Sport}}
-  </td>
+  <td *ngIf='court.Sport=="Soccer"'[style.background-color]='backgroundcolor'>{{court.Sport}}</td>
+  <td *ngIf='court.Sport!="Soccer"'> {{court.Sport}}</td>
+  <td *ngIf='court.Sport=="Soccer"'>
+    <input type='checkbox' onclick='return false' [checked]='court.Info=="7vs7"'>7vs7
+    <input type='checkbox' onclick='return false' [checked]='court.Info=="5vs5"'>5vs5</td>
+    <td *ngIf='court.Sport!="Soccer"'>
+        <input type='radio' onclick='return false' [checked]='court.Info=="Indoor"'>Indoor
+        <input type='radio' onclick='return false' [checked]='court.Info=="Outdoor"'>Outdoor</td>
+  <td><button (click)="court.onClickMe()">Check your field name</button></td>
+  <td><app-max-players [maxPlayer]='court.maxPlayer()'
+    [sportType]='court.Sport'
+    (maxPlayerClicked)='onMaxPlayerClicked($event)'>
+  </app-max-players>
+    </td>
 </tr>
 </tbody>
 </table>
