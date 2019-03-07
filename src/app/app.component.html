@@ -25,7 +25,12 @@
 </thead>
 <tbody>
 <tr *ngFor='let court of courts'>
-  <td>{{court.Field}}</td>
+  <td>
+      <a [routerLink]="['/courtsdetails,court.Id']">
+        {{ court.Field }}
+      </a>
+  </td>
+  
   <td *ngIf='court.Sport=="Soccer"'[style.background-color]='backgroundcolor'>{{court.Sport}}</td>
   <td *ngIf='court.Sport!="Soccer"'> {{court.Sport}}</td>
   <td *ngIf='court.Sport=="Soccer"'>

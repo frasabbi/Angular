@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TennisCourt } from './tenniscourt';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +17,12 @@ import { TennisCourt } from './tenniscourt';
       new TennisCourt(4,'Soccer','Concrete',"Ste's Field",'7vs7'),
       new TennisCourt(5,'Tennis','Grass',"Nico's field",'Indoor')
       ];
+     
       return courts;
     }
+  
+    getCourt(id: number): Observable<TennisCourt | undefined> {
+      return this.getCourts().pipe(
+        map((products: TennisCourt[]) => products.find(p => p.Id === id))
+      );
 }
