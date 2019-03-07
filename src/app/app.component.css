@@ -1,0 +1,11 @@
+td,th{
+    border:5px double
+}
+table{
+    border: 6px solid ;
+    border-bottom-color: blue;
+    border-top-color: red;
+    border-right-color: black;
+    border-left-color: white;
+
+}
