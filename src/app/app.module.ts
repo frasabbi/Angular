@@ -30,8 +30,6 @@ import { MasterPageComponent } from './master-page/master-page.component';
        ]),
    ],
    providers: [],
-   bootstrap: [
-      MasterPageComponent
-   ]
+   bootstrap: [MasterPageComponent]
 })
 export class AppModule { }
